@@ -1,0 +1,47 @@
+<div class="col-md-10 col-md-offset-1">
+  <div>
+    <a [routerLink]="['/admin/']" class="btn btn-default"> Back</a>
+  </div>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
+  <div class="well well bs-component">
+    <form novalidate class="form-horizontal" (ngSubmit)="createUser()" [formGroup]="userForm">
+      <fieldset>
+        <legend>Add a new user</legend>
+        <div class="form-group">
+          <label for="email" class="col-lg-2 control-label">Email</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email of the user" formControlName="email">
+            <div *ngIf="userForm.get('email').dirty && userForm.get('email').hasError('invalidEmail')" class="alert alert-danger">Not a valid email</div>
+            <div *ngIf="userForm.get('email').dirty && userForm.get('email').hasError('required')" class="alert alert-danger">Email is required</div>
+            <div *ngIf="userForm.get('email').dirty && userForm.get('email').hasError('minlength')" class="alert alert-danger">Email should have at least 3 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name" class="col-lg-2 control-label">Full name</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name of the user" formControlName="name">
+            <div *ngIf="userForm.get('name').dirty && userForm.get('name').hasError('required')" class="alert alert-danger">Name is required</div>
+            <div *ngIf="userForm.get('name').dirty && userForm.get('name').hasError('minlength')" class="alert alert-danger">Name should have at least 3 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-lg-2 control-label">Password</label>
+          <div class="col-lg-10">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" formControlName="password">
+            <div *ngIf="userForm.get('password').dirty && userForm.get('password').hasError('required')" class="alert alert-danger">Password is required</div>
+            <div *ngIf="userForm.get('password').dirty && userForm.get('password').hasError('minlength')" class="alert alert-danger">Password should have at least 6 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <a [routerLink]="['/admin/']" class="btn btn-default"> Cancel</a>
+            <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Create</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

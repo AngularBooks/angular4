@@ -18,12 +18,17 @@
         <li routerLinkActive="active"><a [routerLink]="['/gallery']">Home</a></li>
         <li routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
         <li routerLinkActive="active"><a [routerLink]="['/contact']">Contact</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Member
+        <li class="dropdown" ngDropdown>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Member
             <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
+          <ul *ngIf="!isLoggedIn" class="dropdown-menu" role="menu">
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
+          </ul>
+
+          <ul *ngIf="isLoggedIn" class="dropdown-menu" role="menu">
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </li>
       </ul>

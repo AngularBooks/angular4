@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row banner">
+
+    <div class="col-md-12">
+
+      <div class="list-group">
+        <div class="list-group-item">
+          <div class="row-action-primary">
+            <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-user"></span> Manage User</h4>
+          </div>
+          <div class="row-content">
+            <a [routerLink]="['/admin/users']" class="btn btn-default btn-raised">All Users</a>
+            <a [routerLink]="['/admin/users/create']" class="btn btn-primary btn-raised">New User</a>
+          </div>
+        </div>
+        <div class="list-group-separator"></div>
+        <div class="list-group-item">
+          <div class="row-action-primary">
+            <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-picture"></span> Manage Images</h4>
+          </div>
+          <div class="row-content">
+            <a [routerLink]="['/admin/images']" class="btn btn-default btn-raised">All Images</a>
+            <a [routerLink]="['/admin/images/create']" class="btn btn-primary btn-raised">New Image</a>
+          </div>
+        </div>
+        <div class="list-group-separator"></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

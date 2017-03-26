@@ -1,0 +1,32 @@
+<div class="col-md-10 col-md-offset-1">
+  <div>
+    <a [routerLink]="['/admin/']" class="btn btn-default"> Back</a>
+    <a [routerLink]="['/admin/images/create']" class="btn btn-success"> New Image</a>
+  </div>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let image of images | async">
+        <td><img src="{{image.thumbnail}}" width="200"/></td>
+        <td>{{image.title}} </td>
+        <td>
+          <a [routerLink]="['/admin/images/edit', image.id]" class="btn btn-info"> Edit</a>
+          <a [routerLink]="['/admin/images/delete', image.id]" class="btn btn-danger"> Delete</a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

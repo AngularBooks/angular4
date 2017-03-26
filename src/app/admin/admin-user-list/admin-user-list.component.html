@@ -1,0 +1,28 @@
+<div class="col-md-10 col-md-offset-1">
+  <div>
+    <a [routerLink]="['/admin/']" class="btn btn-default"> Back</a>
+    <a [routerLink]="['/admin/users/create']" class="btn btn-success"> New User</a>
+  </div>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let user of users| async">
+        <td>{{user.email}} </td>
+        <td>{{user.name}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

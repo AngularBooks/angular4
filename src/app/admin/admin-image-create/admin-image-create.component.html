@@ -1,0 +1,61 @@
+<div class="col-md-10 col-md-offset-1">
+  <div>
+    <a [routerLink]="['/admin/']" class="btn btn-default"> Back</a>
+  </div>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
+  <div class="well well bs-component">
+    <form novalidate class="form-horizontal" (ngSubmit)="createImage(createImageForm.value)" #createImageForm="ngForm">
+      <fieldset>
+        <legend>Add a new image</legend>
+        <div class="form-group">
+          <label for="thumbnail" class="col-lg-2 control-label">Thumbnail</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Thumbnail of the image" ngModel #thumbnail="ngModel" required minlength="3">
+            <div *ngIf="thumbnail.errors?.required && thumbnail.touched" class="alert alert-danger">
+              Thumbnail is required
+            </div>
+            <div *ngIf="thumbnail.errors?.minlength && thumbnail.touched" class="alert alert-danger">
+              Minimum of 3 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imageLink" class="col-lg-2 control-label">Image Link</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="imageLink" name="imageLink" placeholder="Link of the image" ngModel #imageLink="ngModel" required>
+            <div *ngIf="imageLink.errors?.required && imageLink.touched" class="alert alert-danger">
+              ImageLink is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Title</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title" ngModel #title="ngModel" required>
+            <div *ngIf="title.errors?.required && title.touched" class="alert alert-danger">
+              Title is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description" class="col-lg-2 control-label">Description</label>
+          <div class="col-lg-10">
+            <textarea class="form-control" rows="3" id="description" name="description" placeholder="Description of the image" ngModel #description="ngModel" required></textarea>
+            <div *ngIf="description.errors?.required && description.touched" class="alert alert-danger">
+              Description is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <a [routerLink]="['/admin/']" class="btn btn-default"> Cancel</a>
+            <button type="submit" class="btn btn-primary" [disabled]="createImageForm.invalid">Create</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

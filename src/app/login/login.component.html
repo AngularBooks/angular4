@@ -1,0 +1,37 @@
+<div class="col-md-10 col-md-offset-1">
+
+  <div *ngIf="status=='success'" class="alert alert-success" role="alert"> {{ message }} </div>
+  <div *ngIf="status=='error'" class="alert alert-danger" role="alert"> {{ message }} </div>
+
+  <div class="well well bs-component">
+    <form novalidate class="form-horizontal" (ngSubmit)="login()" [formGroup]="userForm">
+      <fieldset>
+        <legend>Login</legend>
+        <div class="form-group">
+          <label for="email" class="col-lg-2 control-label">Email</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email of the user" formControlName="email">
+            <div *ngIf="emailControl.dirty && emailControl.hasError('required')" class="alert alert-danger">Email is required</div>
+            <div *ngIf="emailControl.dirty && emailControl.hasError('minlength')" class="alert alert-danger">Email should have at least 3 characters</div>
+            <div *ngIf="emailControl.dirty && emailControl.hasError('invalidEmail')" class="alert alert-danger">Not a valid email</div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-lg-2 control-label">Password</label>
+          <div class="col-lg-10">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" formControlName="password">
+            <div *ngIf="passwordControl.dirty && passwordControl.hasError('required')" class="alert alert-danger">Password is required</div>
+            <div *ngIf="passwordControl.dirty && passwordControl.hasError('minlength')" class="alert alert-danger">Password should have at least 6 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <a [routerLink]="['/']" class="btn btn-default"> Cancel</a>
+            <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Login</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
