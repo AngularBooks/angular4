@@ -25,7 +25,7 @@ export class AuthService {
 
         if (token) {
           this.token = token;
-          localStorage.setItem('id_token', JSON.stringify(this.token));
+          localStorage.setItem('token', JSON.stringify(this.token));
           return true;
         } else {
           return false;
@@ -41,7 +41,7 @@ export class AuthService {
 
   logout(): void {
     this.token = null;
-    localStorage.removeItem('id_token');
+    localStorage.removeItem('token');
     console.log("you are logged out!");
     this.router.navigate(['/']);
   }
